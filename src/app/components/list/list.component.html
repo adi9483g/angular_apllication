@@ -1,6 +1,6 @@
 
 <div class="container">
-
+    <!-- search box to find possible combinations -->
     <form [formGroup]='searchForm'>
         <div class="input__container">
             <input [(ngModel)]="input" [formControl]="searchForm.get('input')" (keydown)="onKey($event)" class="input" type="text" placeholder="Enter valid number here"/>
@@ -13,29 +13,27 @@
         <p *ngIf="input && input.toString().length !== 7 && input.toString().length !== 10" class="error_label">Input number length should be 7 or 10 only</p>
     </form>
 
-
-        <!-- <ul class="list">
-            <h1 *ngIf="data && data.length === 0" align='center'>No Data</h1>
-            <li *ngFor="let item of chunk | slice:1" class="list__item">
-                <h2>{{ item }}</h2>
-            </li>
-        </ul> -->
+    <!-- table to display possible combinations -->
     <div id="displaytable" align='center'>
         <h2>Total Count of Combinations: {{ totalItem }}</h2>
         <table id="combinations">
             <tr>
                 <th><h2>Possible Combinations</h2></th>
             </tr>
+            <!-- shows loading until data is fetched from endpoint -->
             <tr *ngIf="data && data.length === 0" align='center'>
                 <td><h2>Loading...</h2></td>
             </tr>
+            <!-- loops on data and display number one by one in each row -->
             <tr *ngFor="let item of chunk">
                 <td><h2>{{ item }}</h2></td>
             </tr>
         </table>
     </div>
+    <!-- handles pagination -->
     <div *ngIf="data" class="pagination__container">
         <label>No of item per page &nbsp; </label>
+        <!-- dropdown to select number of items to be shown on a single page -->
         <select (change)="onPerPageChange(+$event.target.value)">
             <option value="5">5</option>
             <option value="10">10</option>
