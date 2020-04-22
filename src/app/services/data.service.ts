@@ -15,7 +15,7 @@ export class DataService {
   ) { 
     this.dataStream = new Observable()
    }
-
+  // method to fetch all possible combinations with endpoint created in back end 
    fetchData(input: string): Observable<any> {
      return this.http.get(`${API_URL}/${input}`, {
        observe:'response'
