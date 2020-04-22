@@ -29,7 +29,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  // method that calls service method to fetch possible combinations by subscribing to it
   fetchPossibleCombinations() {
     if (this.searchForm.valid && (this.input.length === 7 || this.input.length === 10)) {
       this.data = [];
@@ -42,6 +42,7 @@ export class ListComponent implements OnInit {
     }
   }
 
+  // makes next 25 items visible i.e. it shows the next page
   next() {
     if (this.page <= this.totalItem / this.perPage) {
       this.page++;
@@ -50,6 +51,7 @@ export class ListComponent implements OnInit {
     }
   }
 
+  // makes previous 25 items visible i.e. it shows the previous page
   previous() {
     if (this.page > 1) {
       this.page--;
@@ -58,17 +60,20 @@ export class ListComponent implements OnInit {
     }
   }
 
+  // updates number of items in table to be displayed on single page 
   updateList() {
     const offset = (this.page - 1) * this.perPage;
     this.chunk = this.data.slice(offset, offset + this.perPage);
   }
 
+  // sets number of items to display on a single page
   onPerPageChange(value: number) {
     this.perPage = value;
     this.updateList();
   }
 
-  onKey(event: any) { // without type info
+  // method called on each keydown event to reset data in table and total count
+  onKey(event: any) { 
     if (event.target.value.length != 7 || event.target.value.length != 10) {
       this.chunk = [];
     }
