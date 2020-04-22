@@ -3,8 +3,8 @@
 
     <form [formGroup]='searchForm'>
         <div class="input__container">
-            <input [(ngModel)]="input" [formControl]="searchForm.get('input')" (keydown.enter)="onKey($event)" class="input" type="text" placeholder="Enter valid number here"/>
-            <button class="btn" (click)="fetchData()">Search</button>
+            <input [(ngModel)]="input" [formControl]="searchForm.get('input')" (keydown)="onKey($event)" class="input" type="text" placeholder="Enter valid number here"/>
+            <button class="btn" (click)="fetchPossibleCombinations()">Search</button>
         </div>
         <p *ngIf="
             searchForm.get('input').touched &&
@@ -14,15 +14,26 @@
     </form>
 
 
-    <div class="list__container">
-        <ul class="list">
+        <!-- <ul class="list">
             <h1 *ngIf="data && data.length === 0" align='center'>No Data</h1>
-            <li *ngFor="let item of chunk;" class="list__item">
+            <li *ngFor="let item of chunk | slice:1" class="list__item">
                 <h2>{{ item }}</h2>
             </li>
-        </ul>
+        </ul> -->
+    <div id="displaytable" align='center'>
+        <h2>Total Count of Combinations: {{ totalItem }}</h2>
+        <table id="combinations">
+            <tr>
+                <th><h2>Possible Combinations</h2></th>
+            </tr>
+            <tr *ngIf="data && data.length === 0" align='center'>
+                <td><h2>Loading...</h2></td>
+            </tr>
+            <tr *ngFor="let item of chunk">
+                <td><h2>{{ item }}</h2></td>
+            </tr>
+        </table>
     </div>
-
     <div *ngIf="data" class="pagination__container">
         <label>No of item per page &nbsp; </label>
         <select (change)="onPerPageChange(+$event.target.value)">

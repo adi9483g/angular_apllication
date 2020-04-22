@@ -9,14 +9,14 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 })
 export class ListComponent implements OnInit {
 
-  searchForm: FormGroup
+  searchForm: FormGroup;
 
-  input: string
-  data: string[]
-  chunk: string[]
-  totalItem = 0
-  perPage = 25
-  page = 1
+  input: string;
+  data: string[];
+  chunk: string[];
+  totalItem = 0;
+  perPage = 25;
+  page = 1;
 
   constructor(
     private dataService: DataService,
@@ -24,13 +24,13 @@ export class ListComponent implements OnInit {
   ) {
     this.searchForm = this.formBuilder.group({
       input: ['', [Validators.required]]
-    })
+    });
   }
 
   ngOnInit(): void {
   }
 
-  fetchData() {
+  fetchPossibleCombinations() {
     if (this.searchForm.valid && (this.input.length === 7 || this.input.length === 10)) {
       this.data = [];
       this.chunk = [];
@@ -68,10 +68,11 @@ export class ListComponent implements OnInit {
     this.updateList();
   }
 
-  onKey(event:any) { // without type info
-    if (event.target.value.length != 7 || event.target.value.length != 10){
-      this.chunk =[]
+  onKey(event: any) { // without type info
+    if (event.target.value.length != 7 || event.target.value.length != 10) {
+      this.chunk = [];
     }
-    this.data = ["click search"]
+    this.totalItem = 0;
+    this.data = ['click search'];
   }
 }

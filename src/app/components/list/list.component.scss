@@ -5,13 +5,14 @@
     & .error_label {
         font-size: 1.5rem;
         text-align: center;
+        margin-bottom: 25px;
     }
 }
 
 .input__container {
     margin-top: 1rem;
     transition: .3s;
-    background-color: #8881f1;
+    background-color: #2f4f4f;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,6 +23,7 @@
 
     & .input {
         background-color: transparent;
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
         height: 3rem;
         outline: none;
         border: none;
@@ -59,24 +61,53 @@
     justify-content: center;
     margin-top: 2rem;
 
-    &  .list {
-        list-style: none;
-        height: calc(100vh - 220px);
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        overflow: auto;
+    // &  .list {
+    //     list-style: none;
+    //     height: calc(100vh - 220px);
+    //     width: 100%;
+    //     display: flex;
+    //     flex-direction: column;
+    //     align-items: center;
+    //     overflow: auto;
 
-        &__item {
-            margin: 1rem;
+    //     &__item {
+    //         margin: 1rem;
 
-          & h2 {
-            font-size: 1.8rem;
-          }
-        }
-    }
+    //       & h2 {
+    //         font-size: 1.8rem;
+    //       }
+    //     }
+    // }
 }
+
+#displaytable {
+    text-align: center;
+}
+
+#combinations {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    margin-left: 325px;
+    margin-top: 25px;
+  }
+  
+  #combinations td, #combinations th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #combinations tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #combinations tr:hover {background-color: #ddd;}
+  
+  #combinations th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #2f4f4f;
+    color: white;
+  }
 
 .pagination__container {
     display: flex;
